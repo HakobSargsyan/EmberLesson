@@ -1,4 +1,4 @@
-/*import Ember from 'ember';
+import Ember from 'ember';
 import Song from "../../../models/song";
 
 export default Ember.Route.extend({
@@ -15,7 +15,8 @@ export default Ember.Route.extend({
 			var song = Song.create({ title: title, band: band });
 			band.get('songs').pushObject(song);
 			controller.set('title', '');
-		}
+
+		},
 	}
 
-});*/
+});

@@ -63,9 +63,20 @@ export default Ember.Route.extend({
 			songs:[pretender] 
 		});
 
-		pearlJam.get('songs').pushObject(daughter);
-		console.log(pearlJam.get('songs.firstObject.title'));
-		console.log(ledZeppelin.get('songs.firstObject.title'))
+		//pearlJam.get('songs').pushObject(daughter);
+		/*console.log(pearlJam.get('songs.firstObject.title'));
+		console.log(ledZeppelin.get('songs.firstObject.title'));*/
 		return [ledZeppelin, pearlJam, fooFighters];
+	},
+
+
+	actions : {
+		createBand : function (){
+			var name = this.get('controller').get('name');
+			var band = Band.create({name : name});
+			this.modelFor('bands').pushObject(band);
+			this.get('controller').set('name','');
+			this.transitionTo('bands.band.songs','band');
+		},
 	}
 });

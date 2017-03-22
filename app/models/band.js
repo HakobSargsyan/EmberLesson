@@ -12,4 +12,12 @@ export default Ember.Object.extend({
 			this.set('songs',[]);
 		}
 	}),
+
+	/*init : function (){
+		console.log(this,arguments);
+		this._super.apply(this,arguments);
+		if(!this.get('songs')){
+			this.set('songs',[]);
+		}
+	}*/
 });
