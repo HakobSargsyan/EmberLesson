@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	title : "",
 	songCreationStarted : false,
-	
+
 	actions: {
 		updateRating : function (params){
 			var song = params.item,
@@ -16,6 +16,9 @@ export default Ember.Controller.extend({
 		}
 	},
 
+	noSongs: Ember.computed('model.songs.length', function() {
+		return this.get('model.songs.length') === 0;
+	}),
 
 	isAddButtonDisabled : Ember.computed('title',function(){
 		return Ember.isEmpty(this.get('title'))
