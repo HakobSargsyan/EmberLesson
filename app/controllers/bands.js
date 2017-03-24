@@ -4,6 +4,6 @@ export default Ember.Controller.extend({
 	name : "",
 
 	isAddButtonDisabled : Ember.computed('name',function(){
-		return Ember.isEmpty(this.get('name'))
+		return Ember.isEmpty(this.get('name'));
 	})
 });

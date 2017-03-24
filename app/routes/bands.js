@@ -1,6 +1,4 @@
 import Ember from 'ember';
-import Band from '../models/band';
-import Song from '../models/song';
 
 /*//Band extend from Ember Object
 var Band = Ember.Object.extend({
@@ -33,7 +31,7 @@ export default Ember.Route.extend({
 		var yellowLedbetter = Song.create({
 			title: 'Yellow Ledbetter',
 			band: 'Pearl Jam',
-			rating: 4
+			rating 4
 		});
 
 		var pretender = Song.create({
@@ -75,11 +73,13 @@ export default Ember.Route.extend({
 
 	actions : {
 		createBand : function (){
-			var name = this.get('controller').get('name');
-			var band = Band.create({name : name});
-			this.modelFor('bands').pushObject(band);
-			this.get('controller').set('name','');
-			this.transitionTo('bands.band.songs','band');
+			var route = this,
+				controller = this.get('controller');
+			var band = this.store.createRecord('band',controller.getProperties('name'));
+			band.save().then(function(){
+				controller.set('name','');
+				route.transitionTo('bands.band.songs',band);
+			})
 		},
 		didTransition: function() {
 			document.title = 'Bands - Rock & Roll';

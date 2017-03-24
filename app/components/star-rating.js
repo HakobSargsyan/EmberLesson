@@ -19,7 +19,7 @@ export default Ember.Component.extend({
 		var starsData = [];
 		for (var i = start; i <= end; i++) {
 			starsData.push({rating : i ,full : type === 'full'});
-		};
+		}
 
 		return starsData;
 	},
@@ -29,7 +29,7 @@ export default Ember.Component.extend({
 			this.get('onClick',{
 				item : this.get('item'),
 				rating : newRating
-			})
+			});
 		}
 	}
 
