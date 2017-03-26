@@ -1,22 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	queryParams: {
-		sortBy: 'sort',
-		searchTerm: 's',
+	queryParams : {
+		sortBy : 'sort',
+		searchTerm : 's',
 	},
-
-	title : "",
-	songCreationStarted : false,
-
-	sortBy: 'ratingDesc',
-	sortProperties: Ember.computed('sortBy', function() {
+	
+	sortBy : "ratingDesc",
+	sortProperties : Ember.computed('sortBy',function(){
 		var options = {
 			'ratingDesc': 'rating:desc,title:asc',
 			'ratingAsc': 'rating:asc,title:asc',
 			'titleDesc': 'title:desc',
 			'titleAsc': 'title:asc',
-		};
+		}
 		return options[this.get('sortBy')].split(',');
 	}),
 
@@ -31,8 +28,6 @@ export default Ember.Controller.extend({
 	}),
 
 	sortedSongs: Ember.computed.sort('matchingSongs', 'sortProperties'),
-
-
 
 	actions: {
 		updateRating : function (params){

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import wait from '../utils/wait';
 
 /*//Band extend from Ember Object
 var Band = Ember.Object.extend({
@@ -17,6 +18,15 @@ var Song = Ember.Object.extend({
 	band : "",
 	rating : 0,
 });*/
+/*	function wait(promise,delay){
+		return new Ember.RSVP.Promise(function(resolve){
+			setTimeout(function(){
+				promise.then(function(result){
+					resolve(result);
+				})
+			},delay);
+		})
+	}*/
 
 export default Ember.Route.extend({
 	model:function(){
@@ -66,8 +76,8 @@ export default Ember.Route.extend({
 		/*console.log(pearlJam.get('songs.firstObject.title'));
 		console.log(ledZeppelin.get('songs.firstObject.title'));*/
 		/*return [ledZeppelin, pearlJam, fooFighters];*/
-
-		return this.get('store').findAll('band');
+		var bands =this.get('store').findAll('band')
+		return wait(bands, 3 * 1000);
 	},
 
 

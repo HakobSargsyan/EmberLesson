@@ -1,9 +1,15 @@
 import Ember from 'ember';
+import wait from '../../../utils/wait';
 
 export default Ember.Route.extend({
 	model : function (){
 		//return parent bands.band Model
-		return this.modelFor('bands.band');
+		var band = this.modelFor('bands.band');
+		//show if promise rejected
+		//return Ember.RSVP.reject(this.modelFor('bands.band'));
+
+		return wait(band, 500);
+		//return this.modelFor('bands.band');
 	},
 
 	actions: {
